@@ -1,0 +1,160 @@
+﻿@viewModel StarRating.ViewModels.MasterPageViewModel, StarRating
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DotVVM Star rating</title>
+
+    <style>
+        
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 300;
+            src: url('fonts/quicksand-v13-latin-300.eot'); /* IE9 Compat Modes */
+            src: local(''), url('fonts/quicksand-v13-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/quicksand-v13-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+            url('fonts/quicksand-v13-latin-300.woff') format('woff'), /* Modern Browsers */
+            url('fonts/quicksand-v13-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('fonts/quicksand-v13-latin-300.svg#Quicksand') format('svg'); /* Legacy iOS */
+        }
+
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/quicksand-v13-latin-regular.eot'); /* IE9 Compat Modes */
+            src: local(''), url('fonts/quicksand-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/quicksand-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+            url('fonts/quicksand-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
+            url('fonts/quicksand-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('fonts/quicksand-v13-latin-regular.svg#Quicksand') format('svg'); /* Legacy iOS */
+        }
+        /* quicksand-500 - latin */
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 500;
+            src: url('fonts/quicksand-v13-latin-500.eot'); /* IE9 Compat Modes */
+            src: local(''), url('fonts/quicksand-v13-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/quicksand-v13-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+            url('fonts/quicksand-v13-latin-500.woff') format('woff'), /* Modern Browsers */
+            url('fonts/quicksand-v13-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('fonts/quicksand-v13-latin-500.svg#Quicksand') format('svg'); /* Legacy iOS */
+        }
+        /* quicksand-600 - latin */
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 600;
+            src: url('fonts/quicksand-v13-latin-600.eot'); /* IE9 Compat Modes */
+            src: local(''), url('fonts/quicksand-v13-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/quicksand-v13-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+            url('fonts/quicksand-v13-latin-600.woff') format('woff'), /* Modern Browsers */
+            url('fonts/quicksand-v13-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('fonts/quicksand-v13-latin-600.svg#Quicksand') format('svg'); /* Legacy iOS */
+        }
+        /* quicksand-700 - latin */
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 700;
+            src: url('fonts/quicksand-v13-latin-700.eot'); /* IE9 Compat Modes */
+            src: local(''), url('fonts/quicksand-v13-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('fonts/quicksand-v13-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+            url('fonts/quicksand-v13-latin-700.woff') format('woff'), /* Modern Browsers */
+            url('fonts/quicksand-v13-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('fonts/quicksand-v13-latin-700.svg#Quicksand') format('svg'); /* Legacy iOS */
+        }
+
+        html {
+            font-family: "Quicksand";
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -ms-overflow-style: scrollbar;
+            -webkit-tap-highlight-color: rgba(0,0,0,0)
+        }
+
+        body {
+            margin: 0;
+            font-family: "Quicksand";
+            font-size: 1.2em;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #000000;
+            text-align: left;
+            background-color: #fff
+        }
+
+        h1 {
+            font-family: "Quicksand";
+            font-weight: 700;
+            color: #004C88;
+            font-size: 1.8em;
+            padding-top: 1em;
+        }
+    </style>
+    
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+        .flex-row-reverse-star {
+            -webkit-box-orient: horizontal !important;
+            -webkit-box-direction: reverse !important;
+            -webkit-flex-direction: row-reverse !important;
+            -ms-flex-direction: row-reverse !important;
+            flex-direction: row-reverse !important
+        }
+
+        .justify-content-center-star {
+            -webkit-box-pack: center !important;
+            -webkit-justify-content: center !important;
+            -ms-flex-pack: center !important;
+            justify-content: center !important
+        }
+
+        .d-flex-star {
+            display: -webkit-box !important;
+            display: -webkit-flex !important;
+            display: -ms-flexbox !important;
+            display: flex !important
+        }
+
+        .starrating > input {
+            display: none;
+        }
+        /* Remove radio buttons */
+
+        .starrating > label:before {
+            content: "\f005"; /* Star */
+            margin: 2px;
+            font-size: 8em;
+            font-family: FontAwesome;
+            display: inline-block;
+        }
+
+        .starrating > label {
+            color: #222222; /* Start color when not clicked */
+        }
+
+        .starrating > input:checked ~ label {
+            color: #ffca08;
+        }
+        /* Set yellow color when star checked */
+
+        .starrating > input:hover ~ label {
+            color: #ffca08;
+        }
+        /* Set yellow color when star hover */
+
+    </style>
+
+
+
+</head>
+<body>
+	<dot:ContentPlaceHolder ID="MainContent" />
+</body>
+</html>
