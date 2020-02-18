@@ -4,7 +4,7 @@ In the following demo we can find a solution implemented in Visual Studio 2019 f
 
 ## Tutorial: 
 
-[Very soon](#)
+[dev.to/esdanielgomez/star-rating-with-dotvvm-and-css-1jph](https://dev.to/esdanielgomez/star-rating-with-dotvvm-and-css-1jph)
 
 ## Final result:
 
